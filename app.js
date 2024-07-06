@@ -65,19 +65,41 @@ function letterSearch (str = "Abdullajonaa") {
 
 // 5. nums = [2,7,11,15], target = 9 => ixtiyoriy array va biron bir target nomli o'zgaruvchi olinsin. Array ichidagi sonlar yig'indisi target ga teng bulgan sonlarni index si topilsin Misol uchun 2 va 7 soni yig'indisi 9 ga teng, masala sharti mana shu 2 va 7 soni indexi console ga chiqarilsin
 function targetIndex () {
-  let nums = [2,3,7,11,15]
+  let nums = [0,3,2,11,15,7]
   let target = 9
   let indexs = []
 
   for (let i = 0; i < nums.length; i++) {
     let sum = 0;
-    for (let j = i; j < nums.length; j++) {
-      if (sum == target) {
-        indexs.push()
+    if (nums[i] == target) {
+      indexs.push(i)
+    } else {
+      for (let j = 1; j < nums.length; j++) {
+        sum = nums[i] + nums[j]
+        if (sum == target) {
+          indexs.push({i,j})
+          i += nums.length
+        }
       }
-      sum += nums[j]
     }
-    console.log(sum);
   }
+  return indexs
 }
 console.log(targetIndex());
+
+
+
+
+// 6. Ixtiyoriy n ta element dan iborat bo’lgan array yarating va uning ichidagi dublicate bo’lgan item larni o’chiring:
+
+function dublicateNums () {
+  let arr = [4,2,3,0,4,3,6,7,7,8,3]
+  let newArr = []
+  for (let item of arr) {
+    if (!newArr.includes(item)) {
+      newArr.push(item)
+    }
+  }
+  return newArr
+}
+// console.log(dublicateNums())
